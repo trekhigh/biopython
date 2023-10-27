@@ -1,0 +1,13 @@
+from Bio import SeqIO
+import numpy as np
+
+# Load sequence features from a GenBank file
+genbank_file = "your_genbank_file.gb"
+
+feature_vectors = []
+for record in SeqIO.parse(genbank_file, "genbank"):
+    # Extract feature information and convert to a numerical vector
+    feature_vector = [record.features[0].location.start, record.features[0].location.end]
+    feature_vectors.append(feature_vector)
+
+feature_matrix = np.array(feature_vectors)
